@@ -1,0 +1,23 @@
+#!/bin/sh
+set -e
+
+# Laravel
+if [ "${APP_ENV}" = "local" ]; then
+  # Cache
+  echo "Caching configuration..."
+  php artisan config:cache
+  php artisan route:cache
+  php artisan view:cache
+
+  find "${APP_PATH}/storage" -type f -exec chown www-data:www-data {} \;
+
+  # Migrations
+  echo "Applying Eloquent migrations..."
+  php artisan migrate --force
+
+  # Seeders
+  echo "Applying Seeders"
+  php artisan db:seed --force
+fi
+
+exec /usr/bin/supervisord -n -c /etc/supervisor/conf.d/supervisord.conf
