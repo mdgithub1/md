@@ -24,12 +24,24 @@ Based on [Criteria](docs/project/001-criteria.md) project should be focused on:
      - [Use Spatie Query Builder](docs/adr/007-spatie-builder-as-query-builder.md)
    - [ER Diagram](docs/erd/erd_diagram.md)
    - [General API flowchart](docs/flowcharts/000-geenral-flowchart.md)
- - [WIP] [How to run](#how-to-run)
+ - [How to run](#how-to-run)
  - [WIP] [How to test](#how-to-test)
  - [Project issues](#project-issues)
 
 ## How to run
-_WIP_
+```bash
+// Clone the repository
+git clone https://github.com/mdgithub1/md.git
+
+// Copy enviromental settings
+cd md && cp .env.local .env
+
+// Pull the Docker image
+docker pull sdmd/md-laravel
+
+// Run containers
+docker-compose -f docker-compose.yml -f docker-compose.local.yml up -d
+```
 ## How to test
 _WIP_
 
@@ -41,12 +53,12 @@ _WIP_
    - [x] EDR
    - [x] General API flowchart
    - [x] Project issues/tasks
-   - [ ] How to run
+   - [x] How to run
    - [ ] How to test
- - [ ] Project setup
-   - [ ] Install Laravel with dependencies
-   - [ ] Docker setup
-   - [ ] Initial config settings
+ - [x] Project setup
+   - [x] Install Laravel with dependencies
+   - [x] Docker setup
+   - [x] Initial config settings
  - [ ] DB modeling
    - [ ] Entities with relationships
    - [ ] Migrations
