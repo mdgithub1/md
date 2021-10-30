@@ -16,7 +16,7 @@ Use Laravel PHP framewrok with Eloquent ORM.
   
 ## Consequences
 
-We wil have a framework/ORM to rapidly build the API.  
+We will have a framework/ORM to rapidly build the API.  
 The discipline how to create entities/models will not be exact as would be expected.  
   
 **Risk**   
