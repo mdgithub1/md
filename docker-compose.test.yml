@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  app:
+    env_file:
+      - .env.testing
+    depends_on:
+      - db-test
+  db-test:
+    image: mariadb:10.4
+    container_name: ${DOCKER_NAME}-mariadb
+    restart: unless-stopped
+    tty: true
+    ports:
+      - ${DB_EXT_PORT}:${DB_PORT}
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - SERVICE_NAME=mysql
+    networks:
+      backend:
+        aliases:
+          - ${DOCKER_NAME}-db

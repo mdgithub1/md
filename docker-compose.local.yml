@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+  app:
+    depends_on:
+      - db
+    volumes:
+      - .:${APP_PATH}:consistent
+  db:
+    image: mariadb:10.4
+    container_name: ${DOCKER_NAME}-mariadb
+    restart: unless-stopped
+    volumes:
+      - ${DOCKER_DB_DIR}:/var/lib/mysql
+    tty: true
+    ports:
+      - ${DB_EXT_PORT}:${DB_PORT}
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USERNAME}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - SERVICE_NAME=mysql
+    networks:
+      backend:
+        aliases:
+          - ${DOCKER_NAME}-db
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "--silent"]
+      interval: "30s"
+      timeout: "3s"
+      start_period: "30s"
+      retries: 3
