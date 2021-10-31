@@ -1,0 +1,7 @@
+.db
+.env
+.idea
+.editorconfig
+vendor
+_ide_helper*php
+.DS_Store
