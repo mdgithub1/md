@@ -15,7 +15,7 @@ class Expenses extends BaseModel
      * @inheritdoc
      */
     protected array $with = [
-        'expenses_type',
+        'expenseType',
     ];
 
    /*

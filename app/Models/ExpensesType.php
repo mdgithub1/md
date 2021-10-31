@@ -20,7 +20,7 @@ class ExpensesType extends BaseModel
     /**
      * Get expenses associated with expenses type
      */
-    public function expenseType(): hasMany
+    public function expenses(): hasMany
     {
         return $this->hasMany(Expenses::class, 'expenses_type_id', 'id');
     }

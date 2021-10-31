@@ -7,6 +7,7 @@ Based on [Criteria](docs/project/001-criteria.md) project should be focused on:
 - **Assumption**:
   - Documentation shows the general project lifecycle rather than all project details
   - ADR: pointed decisions instead of well described decision in full aspect
+  - API versioning is omitted
   - No User Stories / Story points / Issue tasks. Issues will be created as a checklist. [ADR](docs/adr/001-issue-and-user-story-are-not-created.md).
   
 ## Content
@@ -33,9 +34,12 @@ Based on [Criteria](docs/project/001-criteria.md) project should be focused on:
 /*
 |----------------------------------------------------------------------
 | The first run
+|     Initial requirements:
+|     - PHP ^8.0
+|     - Docker | docker-compose ^1.29
 |----------------------------------------------------------------------
 */
-// Clone the repository and update .env (you can omit composer install if you are not going to open project in the IDE'
+// Clone the repository and update .env
 git clone https://github.com/mdgithub1/md.git && cd md && cp .env.local .env && composer install
 
 // Pull Docker images
@@ -84,8 +88,8 @@ _WIP_
    - [x] Migrations
    - [x] Seeders / Factories
  - [ ] PHPUnit Feature tests (limit volume; just examples)
-   - [ ] Listing
-     - [ ] testIndexExistedExpense (200, JSON structure)
+   - [x] Listing
+     - [x] testIndexExistedExpense (200, JSON structure)
    - [ ] Read
      - testShowExistedExpense (200, JSON structure)
      - testShowNonExistedExpense (4xx)
@@ -101,8 +105,8 @@ _WIP_
      - [ ] testDeleteExistedId (200)
      - [ ] testDeleteNonExistedId (4xx)
  - [ ] Expenses API endpoint for CRUD using API Resources (Eager / no need to use lazy loading for project requirements)
-   - [ ] API routes
-   - [ ] Listing _GET_ / _index()_
+   - [x] API routes
+   - [x] Listing _GET_ / _index()_
    - [ ] Read _GET_ / _show()_
    - [ ] Create _POST_ / _store()_
      - [ ] with Laravel FormRequest validation
