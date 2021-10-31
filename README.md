@@ -113,6 +113,6 @@ _WIP_
    - [ ] Update _PUT/PATCH_ / _update()_
      - [ ] with Laravel FormRequest validation
    - [ ] Delete _DELETE_ / _destroy()_
- - [ ] Errors handling 
-   - [ ] Laravel provides default error handling, however, add sample of Handler to provide custom messages/service codes
+ - [x] Errors handling 
+   - [x] Laravel provides default error handling, however, add sample of Handler to provide custom messages/service codes
  - [ ] Flowchart for sample request
