@@ -6,6 +6,7 @@ services:
       - db
     volumes:
       - .:${APP_PATH}:consistent
+      - ${APP_PATH}/vendor
   db:
     image: mariadb:10.4
     container_name: ${DOCKER_NAME}-mariadb
@@ -26,8 +27,8 @@ services:
         aliases:
           - ${DOCKER_NAME}-db
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "--silent"]
-      interval: "30s"
+      test: [ "CMD", "mysqladmin", "ping", "--silent" ]
+      interval: "60s"
       timeout: "3s"
       start_period: "30s"
       retries: 3

@@ -30,12 +30,12 @@ RUN chmod -R 775 bootstrap/cache \
     sed -i "/root \/var\/www\/html\/;/c \    root ${APP_PATH}/public;" /etc/nginx/sites-available/default \
     && \
 # SSL - N/A
-# SSH - N/A
+# SSH - N/A \
 # Composer install
     if [ ${APP_ENV} = "production" ]; then \
         composer install --ansi --no-interaction --no-scripts --no-dev; \
     else \
-        composer install --ansi --no-interaction --no-scripts; \
+        composer install --ansi --no-interaction; \
     fi
 
 # Custom entrypoint to run the app as scheduler or queue worker

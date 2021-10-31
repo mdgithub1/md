@@ -15,6 +15,7 @@ public/hot
 public_html/storage
 public_html/hot
 
+# Various
 storage/*.key
 .env
 /.db/
@@ -23,3 +24,9 @@ Homestead.json
 /.vagrant
 .phpunit.result.cache
 /.idea
+.DS_Store
+*.log
+*.swn
+*.swo
+*.swp
+*.flag

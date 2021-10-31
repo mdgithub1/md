@@ -27,7 +27,7 @@ services:
           - ${DOCKER_NAME}-app
     healthcheck:
       test: ["CMD", "/usr/bin/curl", "-f", "localhost"]
-      interval: "30s"
+      interval: "60s"
       timeout: "3s"
       start_period: "30s"
       retries: 3
