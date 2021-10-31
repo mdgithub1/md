@@ -6,7 +6,6 @@ services:
       - db
     volumes:
       - .:${APP_PATH}:consistent
-      - ${APP_PATH}/vendor
   db:
     image: mariadb:10.4
     container_name: ${DOCKER_NAME}-mariadb
