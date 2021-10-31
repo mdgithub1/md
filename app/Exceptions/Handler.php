@@ -2,11 +2,18 @@
 
 namespace App\Exceptions;
 
+use App\Traits\JsonResponsesTrait;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\JsonResponse;
+use Spatie\QueryBuilder\Exceptions\InvalidSortQuery;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
 {
+    use JsonResponsesTrait;
+
     /**
      * A list of the exception types that are not reported.
      *
@@ -37,5 +44,42 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    /**
+     * Render an exception into an HTTP response
+     *
+     * @inheritdoc
+     */
+    public function render($request, Throwable $e): JsonResponse | null
+    {
+        // MethodNotAllowedHttpException
+        if ($e instanceof MethodNotAllowedHttpException) {
+            return $this->jsonError(
+                message: $e->getMessage(),
+                status: $e->getStatusCode(),
+            );
+        }
+
+        // NotFoundHttpException
+        if ($e instanceof NotFoundHttpException) {
+            return $this->jsonError(
+                message: "The route does not exist for this request.",
+                status: $e->getStatusCode(),
+            );
+        }
+
+        // InvalidSortQuery
+        if ($e instanceof InvalidSortQuery) {
+            return $this->jsonError(
+                message: $e->getMessage(),
+                status: $e->getStatusCode(),
+            );
+        }
+
+        // Handle other exceptions
+        return $this->jsonError(
+            message: $e->getMessage(),
+        );
     }
 }
