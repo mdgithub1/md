@@ -39,9 +39,11 @@ class ExpensesController extends Controller
     }
 
     /**
-     * Single item.
+     * GET Single item.
      *
      * @group Expenses
+     *
+     * @response status=400 scenario="Wrong parameter for filter" {"errors": [{"status": 400, "title": "Bad Request", "detail": "Attempt to read property \"id\" on null.","source": { "pointer": "/api/expenses/", "method": "GET"}}]}
      */
     public function show(Expenses $expenses, int $id) : ExpensesResource
     {
