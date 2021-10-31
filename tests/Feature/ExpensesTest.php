@@ -136,11 +136,11 @@ class ExpensesTest extends TestCase
      */
     public function testIndexPaginatedItemsPerPage(int $perPage = 2): void
     {
-        $response = $this->get(uri: $this->baseUrl . "?per_page=" . $perPage);
+        $response = $this->get( $this->baseUrl . "?per_page=" . $perPage);
 
         $response
             ->assertSuccessful()
-            ->assertJsonCount(count: $perPage, key: "data");
+            ->assertJsonCount($perPage, "data");
     }
 
     /**
@@ -148,11 +148,11 @@ class ExpensesTest extends TestCase
      */
     public function testIndexSortPaginatedItemsPerPage (int $perPage = 3, string $sort = '-value'): void
     {
-        $response = $this->get(uri: $this->baseUrl . "?per_page=" . $perPage . "&sort=" . $sort);
+        $response = $this->get( $this->baseUrl . "?per_page=" . $perPage . "&sort=" . $sort);
 
         $response
             ->assertSuccessful()
-            ->assertJsonCount(count: $perPage, key: "data");
+            ->assertJsonCount($perPage, "data");
     }
 
     /**
@@ -160,10 +160,10 @@ class ExpensesTest extends TestCase
      */
     public function testIndexSortPaginatedItemsWithWrongPropertyName (string $sort = 'lorem'): void
     {
-        $response = $this->get(uri: $this->baseUrl . "?sort=" . $sort);
+        $response = $this->get($this->baseUrl . "?sort=" . $sort);
 
         $response
-            ->assertStatus(status: 400)
+            ->assertStatus(400)
             ->assertJsonStructure($this->jsonError);
     }
 
