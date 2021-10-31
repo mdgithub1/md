@@ -30,17 +30,37 @@ Based on [Criteria](docs/project/001-criteria.md) project should be focused on:
 
 ## How to run
 ```bash
-// Clone the repository
-git clone https://github.com/mdgithub1/md.git
+/*
+|----------------------------------------------------------------------
+| The first run
+|----------------------------------------------------------------------
+*/
+// Clone the repository and update .env
+git clone https://github.com/mdgithub1/md.git && cd md && cp .env.local .env
 
-// Copy enviromental settings
-cd md && cp .env.local .env
-
-// Pull the Docker image
-docker pull sdmd/md-laravel
+// Pull Docker images
+docker pull sdmd/base-nginx-php-fpm8.0-bullseye && docker pull mariadb:10.4
 
 // Run containers
-docker-compose -f docker-compose.yml -f docker-compose.local.yml up -d
+docker-compose -f docker-compose.yml -f docker-compose.local.yml up --build
+
+/*
+|----------------------------------------------------------------------
+| Start / Stop
+|----------------------------------------------------------------------
+*/
+// Start containers
+docker-compose -f docker-compose.yml -f docker-compose.local.yml up
+
+// Stop & remove containers
+docker-compose -f docker-compose.yml -f docker-compose.local.yml down
+
+/*
+|----------------------------------------------------------------------
+| Remove enviroment
+|----------------------------------------------------------------------
+*/
+docker-compose -f docker-compose.yml -f docker-compose.local.yml down --rmi all -v --remove-orphans
 ```
 ## How to test
 _WIP_
