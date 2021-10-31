@@ -35,8 +35,8 @@ Based on [Criteria](docs/project/001-criteria.md) project should be focused on:
 | The first run
 |----------------------------------------------------------------------
 */
-// Clone the repository and update .env
-git clone https://github.com/mdgithub1/md.git && cd md && cp .env.local .env
+// Clone the repository and update .env (you can omit composer install if you are not going to open project in the IDE'
+git clone https://github.com/mdgithub1/md.git && cd md && cp .env.local .env && composer install
 
 // Pull Docker images
 docker pull sdmd/base-nginx-php-fpm8.0-bullseye && docker pull mariadb:10.4
@@ -79,10 +79,10 @@ _WIP_
    - [x] Install Laravel with dependencies
    - [x] Docker setup
    - [x] Initial config settings
- - [ ] DB modeling
-   - [ ] Entities with relationships
-   - [ ] Migrations
-   - [ ] Seeders
+ - [x] DB modeling
+   - [x] Entities with relationships
+   - [x] Migrations
+   - [x] Seeders / Factories
  - [ ] PHPUnit Feature tests (limit volume; just examples)
    - [ ] Listing
      - [ ] testIndexExistedExpense (200, JSON structure)
