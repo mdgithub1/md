@@ -338,6 +338,150 @@ access-control-allow-origin: *
             </p>
                 </form>
 
+            <h2 id="expenses-GETapi-expenses--id-">GET Single item.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-expenses--id-">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:10222/api/expenses/9" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:10222/api/expenses/9"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+
+<pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost:10222/api/expenses/9',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+</span>
+
+<span id="example-responses-GETapi-expenses--id-">
+            <blockquote>
+            <p>Example response (400, Wrong parameter for filter):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;errors&quot;: [
+        {
+            &quot;status&quot;: 400,
+            &quot;title&quot;: &quot;Bad Request&quot;,
+            &quot;detail&quot;: &quot;Attempt to read property \&quot;id\&quot; on null.&quot;,
+            &quot;source&quot;: {
+                &quot;pointer&quot;: &quot;/api/expenses/&quot;,
+                &quot;method&quot;: &quot;GET&quot;
+            }
+        }
+    ]
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 58
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: {
+        &quot;expense_id&quot;: 1,
+        &quot;expense_value&quot;: 2825.55,
+        &quot;expense_description&quot;: &quot;Qui illo et dolorum eum.&quot;,
+        &quot;expense_type&quot;: {
+            &quot;id&quot;: 1,
+            &quot;description&quot;: &quot;Entertainment&quot;
+        }
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-expenses--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-expenses--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-expenses--id-"></code></pre>
+</span>
+<span id="execution-error-GETapi-expenses--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-expenses--id-"></code></pre>
+</span>
+<form id="form-GETapi-expenses--id-" data-method="GET"
+      data-path="api/expenses/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-expenses--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-expenses--id-"
+                    onclick="tryItOut('GETapi-expenses--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-expenses--id-"
+                    onclick="cancelTryOut('GETapi-expenses--id-');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-expenses--id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/expenses/{id}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="id"
+               data-endpoint="GETapi-expenses--id-"
+               value="9"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the expense.</p>
+            </p>
+                    </form>
+
     
 
         
