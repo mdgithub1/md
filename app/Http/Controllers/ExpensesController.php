@@ -37,4 +37,14 @@ class ExpensesController extends Controller
     {
         return  parent::index();
     }
+
+    /**
+     * Single item.
+     *
+     * @group Expenses
+     */
+    public function show(Expenses $expenses, int $id) : ExpensesResource
+    {
+        return new ExpensesResource($expenses::find($id));
+    }
 }
