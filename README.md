@@ -66,6 +66,9 @@ docker-compose -f docker-compose.yml -f docker-compose.local.yml down
 */
 docker-compose -f docker-compose.yml -f docker-compose.local.yml down --rmi all -v --remove-orphans
 ```
+### Access
+- API documentation: [http://localhost:10222/docs](http://localhost:10222/docs)
+- API routes: [http://localhost:10222/api/*](http://localhost:10222/api/expenses)
 ## How to test
 _WIP_
 
