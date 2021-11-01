@@ -83,7 +83,7 @@ class Handler extends ExceptionHandler
         if ($e instanceof InvalidSortQuery) {
             return $this->jsonError(
                 message: $e->getMessage(),
-                status: $e->getStatusCode(),
+                status: 422,
             );
         }
 
@@ -91,6 +91,7 @@ class Handler extends ExceptionHandler
         if ($e instanceof ValidationException) {
             return $this->jsonError(
                 message: $e->validator->getMessageBag()->toArray(),
+                status:  422,
             );
         }
 
