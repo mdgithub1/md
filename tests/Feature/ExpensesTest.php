@@ -2,10 +2,13 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
 class ExpensesTest extends TestCase
 {
+    use DatabaseTransactions;
+
     /**
      * Base URL
      */
@@ -186,6 +189,53 @@ class ExpensesTest extends TestCase
     public function testShowNonExistedItem(int $identifier = 99999999999999): void
     {
         $response = $this->get($this->baseUrl . $identifier);
+
+        $response
+            ->assertStatus(400)
+            ->assertJsonStructure($this->jsonError);
+    }
+
+    /**
+     * Update with correct data
+     */
+    public function testUpdateRequestWithCorrectData(
+        int $identifier = 2,
+        float $value = 111.22,
+        string $description = "Lorem Ipsum",
+        int $type = 1
+    ):void
+    {
+
+        $data = [
+            'value' => $value,
+            'description' => $description,
+            'expenses_type_id' => $type,
+        ];
+
+        $response = $this->json('PUT', $this->baseUrl . $identifier, $data);
+
+        $response
+            ->assertSuccessful()
+            ->assertJsonStructure($this->jsonItem);
+    }
+
+    /**
+     * Update with incorrect data (failed validation)
+     */
+    public function testUpdateRequestWithIncorrectData(
+        int $identifier = 2,
+        string $value = "wrong_type",
+        string $description = "Lorem Ipsum",
+        int $type = 1
+    ): void
+    {
+        $data = [
+            'value' => $value,
+            'description' => $description,
+            'expenses_type_id' => $type,
+        ];
+
+        $response = $this->json('PUT', $this->baseUrl . $identifier, $data);
 
         $response
             ->assertStatus(400)
