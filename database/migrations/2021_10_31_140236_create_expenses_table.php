@@ -17,7 +17,7 @@ class CreateExpensesTable extends Migration
             $table->id();
             $table->double('value', 10, 2);
             $table->string('description');
-            $table->foreignId('expenses_type_id')->constrained('expenses_type');
+            $table->foreignId('expenses_type_id')->nullable()->constrained('expenses_type', 'id');
         });
     }
 
