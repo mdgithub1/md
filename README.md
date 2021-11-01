@@ -75,7 +75,7 @@ docker-compose -f docker-compose.yml -f docker-compose.local.yml down --rmi all 
 docker exec -it md-app php artisan test
 
 |----------------------------------------------------------------------
-| "Try it out" option in API documentation
+| "Try it out" option in API documentation (non-transactional)
 |----------------------------------------------------------------------
 
 @link http://localhost:10222/docs
@@ -86,6 +86,12 @@ docker exec -it md-app php artisan test
 
 Follow API documntation
 Required headers: Accept: application/json
+
+|----------------------------------------------------------------------
+| Rebuild and seed database
+|----------------------------------------------------------------------
+
+docker exec -it md-app php artisan migrate:fresh --seed
 ```
 
 ## Project issues
@@ -106,7 +112,7 @@ Required headers: Accept: application/json
    - [x] Entities with relationships
    - [x] Migrations
    - [x] Seeders / Factories
- - [ ] PHPUnit Feature tests (limit volume; just examples)
+ - [x] PHPUnit Feature tests (limit volume; just examples)
    - [x] Listing
      - [x] testIndexExistedExpense (200, JSON structure)
    - [x] Read
@@ -118,10 +124,10 @@ Required headers: Accept: application/json
    - [x] Update
      - [x] testUpdateInvalidData (2xx)
      - [x] testUpdateInvalidData (4xx)
-   - [ ] Delete
-     - [ ] testDeleteExistedId (200)
-     - [ ] testDeleteNonExistedId (4xx)
- - [ ] Expenses API endpoint for CRUD using API Resources (Eager / no need to use lazy loading for project requirements)
+   - [x] Delete
+     - [x] testDeleteExistedId (200)
+     - [x] testDeleteNonExistedId (4xx)
+ - [x] Expenses API endpoint for CRUD using API Resources (Eager / no need to use lazy loading for project requirements)
    - [x] API routes
    - [x] Listing _GET_ / _index()_
    - [x] Read _GET_ / _show()_
@@ -129,7 +135,7 @@ Required headers: Accept: application/json
      - [x] with Laravel FormRequest validation
    - [x] Update _PUT/PATCH_ / _update()_
      - [x] with Laravel FormRequest validation
-   - [ ] Delete _DELETE_ / _destroy()_
+   - [x] Delete _DELETE_ / _destroy()_
  - [x] Errors handling 
    - [x] Laravel provides default error handling, however, add sample of Handler to provide custom messages/service codes
  - [ ] Flowchart for sample request

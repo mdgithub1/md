@@ -183,31 +183,34 @@ access-control-allow-origin: *
 <code class="language-json">{
     &quot;data&quot;: [
         {
-            &quot;expense_id&quot;: 11,
-            &quot;expense_value&quot;: 0,
-            &quot;expense_description&quot;: &quot;&quot;,
-            &quot;expense_type&quot;: null
+            &quot;expense_id&quot;: 1,
+            &quot;expense_value&quot;: 340.68,
+            &quot;expense_description&quot;: &quot;Amet et itaque unde quo.&quot;,
+            &quot;expense_type&quot;: {
+                &quot;id&quot;: 2,
+                &quot;description&quot;: &quot;Food&quot;
+            }
         },
         {
-            &quot;expense_id&quot;: 12,
-            &quot;expense_value&quot;: 147.11,
-            &quot;expense_description&quot;: &quot;Lorem Ipsum&quot;,
+            &quot;expense_id&quot;: 7,
+            &quot;expense_value&quot;: 796.13,
+            &quot;expense_description&quot;: &quot;Qui ad maiores et.&quot;,
             &quot;expense_type&quot;: {
-                &quot;id&quot;: 4,
-                &quot;description&quot;: &quot;Transport&quot;
+                &quot;id&quot;: 2,
+                &quot;description&quot;: &quot;Food&quot;
             }
         }
     ],
     &quot;links&quot;: {
         &quot;first&quot;: &quot;http://localhost:10222/api/expenses?per_page=2&amp;sort=value&amp;filter%5Bexpenses_type_id%5D=4&amp;page=1&quot;,
-        &quot;last&quot;: &quot;http://localhost:10222/api/expenses?per_page=2&amp;sort=value&amp;filter%5Bexpenses_type_id%5D=4&amp;page=8&quot;,
+        &quot;last&quot;: &quot;http://localhost:10222/api/expenses?per_page=2&amp;sort=value&amp;filter%5Bexpenses_type_id%5D=4&amp;page=4&quot;,
         &quot;prev&quot;: null,
         &quot;next&quot;: &quot;http://localhost:10222/api/expenses?per_page=2&amp;sort=value&amp;filter%5Bexpenses_type_id%5D=4&amp;page=2&quot;
     },
     &quot;meta&quot;: {
         &quot;current_page&quot;: 1,
         &quot;from&quot;: 1,
-        &quot;last_page&quot;: 8,
+        &quot;last_page&quot;: 4,
         &quot;links&quot;: [
             {
                 &quot;url&quot;: null,
@@ -235,26 +238,6 @@ access-control-allow-origin: *
                 &quot;active&quot;: false
             },
             {
-                &quot;url&quot;: &quot;http://localhost:10222/api/expenses?per_page=2&amp;sort=value&amp;filter%5Bexpenses_type_id%5D=4&amp;page=5&quot;,
-                &quot;label&quot;: &quot;5&quot;,
-                &quot;active&quot;: false
-            },
-            {
-                &quot;url&quot;: &quot;http://localhost:10222/api/expenses?per_page=2&amp;sort=value&amp;filter%5Bexpenses_type_id%5D=4&amp;page=6&quot;,
-                &quot;label&quot;: &quot;6&quot;,
-                &quot;active&quot;: false
-            },
-            {
-                &quot;url&quot;: &quot;http://localhost:10222/api/expenses?per_page=2&amp;sort=value&amp;filter%5Bexpenses_type_id%5D=4&amp;page=7&quot;,
-                &quot;label&quot;: &quot;7&quot;,
-                &quot;active&quot;: false
-            },
-            {
-                &quot;url&quot;: &quot;http://localhost:10222/api/expenses?per_page=2&amp;sort=value&amp;filter%5Bexpenses_type_id%5D=4&amp;page=8&quot;,
-                &quot;label&quot;: &quot;8&quot;,
-                &quot;active&quot;: false
-            },
-            {
                 &quot;url&quot;: &quot;http://localhost:10222/api/expenses?per_page=2&amp;sort=value&amp;filter%5Bexpenses_type_id%5D=4&amp;page=2&quot;,
                 &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
                 &quot;active&quot;: false
@@ -263,7 +246,7 @@ access-control-allow-origin: *
         &quot;path&quot;: &quot;http://localhost:10222/api/expenses&quot;,
         &quot;per_page&quot;: 2,
         &quot;to&quot;: 2,
-        &quot;total&quot;: 16
+        &quot;total&quot;: 8
     }
 }</code>
  </pre>
@@ -362,12 +345,12 @@ access-control-allow-origin: *
 
 
 <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:10222/api/expenses/11" \
+    --get "http://localhost:10222/api/expenses/19" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
 
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:10222/api/expenses/11"
+    "http://localhost:10222/api/expenses/19"
 );
 
 const headers = {
@@ -382,7 +365,7 @@ fetch(url, {
 
 <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost:10222/api/expenses/11',
+    'http://localhost:10222/api/expenses/19',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
@@ -487,7 +470,7 @@ access-control-allow-origin: *
                 <input type="number"
                name="id"
                data-endpoint="GETapi-expenses--id-"
-               value="11"
+               value="19"
                data-component="url" hidden>
     <br>
 <p>The ID of the expense.</p>
@@ -513,8 +496,8 @@ If success then response includes updated item</p>
     --header "Accept: application/json" \
     --data "{
     \"value\": 0,
-    \"description\": \"hamlzwhipamauawyloctgioqcihybompyrvfujitztzakxmxohkekxopjvskunvjoyiylgadkxxwafzntdxogczfmhynuaiuxvntvuufaiekahygdgheinbzdfnjnakoucdotvjcknwwmxkvgcosfdoqyoujmouxvjqwanagffbamlldamphbwjprfvaxgen\",
-    \"expenses_type_id\": 1
+    \"description\": \"tmbcxueeuluhpcszlwobevmlpcusfejjnbyepdgeqqgzttnmizppvfkhnkdsooxsxuszipisstupqhbztdgteczpcilrqqcnhtcdhgxhqxnikjznqtdehxmujeyuakmneexkbbnofsprkivxyhoxkddculyeutyckpvmtvmwcrqgwlqatodrmhtdzhedkdvqhgdbawyfdgzov\",
+    \"expenses_type_id\": 5
 }"
 </code></pre>
 
@@ -529,8 +512,8 @@ const headers = {
 
 let body = {
     "value": 0,
-    "description": "hamlzwhipamauawyloctgioqcihybompyrvfujitztzakxmxohkekxopjvskunvjoyiylgadkxxwafzntdxogczfmhynuaiuxvntvuufaiekahygdgheinbzdfnjnakoucdotvjcknwwmxkvgcosfdoqyoujmouxvjqwanagffbamlldamphbwjprfvaxgen",
-    "expenses_type_id": 1
+    "description": "tmbcxueeuluhpcszlwobevmlpcusfejjnbyepdgeqqgzttnmizppvfkhnkdsooxsxuszipisstupqhbztdgteczpcilrqqcnhtcdhgxhqxnikjznqtdehxmujeyuakmneexkbbnofsprkivxyhoxkddculyeutyckpvmtvmwcrqgwlqatodrmhtdzhedkdvqhgdbawyfdgzov",
+    "expenses_type_id": 5
 };
 
 fetch(url, {
@@ -549,8 +532,8 @@ $response = $client-&gt;put(
         ],
         'json' =&gt; [
             'value' =&gt; 0,
-            'description' =&gt; 'hamlzwhipamauawyloctgioqcihybompyrvfujitztzakxmxohkekxopjvskunvjoyiylgadkxxwafzntdxogczfmhynuaiuxvntvuufaiekahygdgheinbzdfnjnakoucdotvjcknwwmxkvgcosfdoqyoujmouxvjqwanagffbamlldamphbwjprfvaxgen',
-            'expenses_type_id' =&gt; 1,
+            'description' =&gt; 'tmbcxueeuluhpcszlwobevmlpcusfejjnbyepdgeqqgzttnmizppvfkhnkdsooxsxuszipisstupqhbztdgteczpcilrqqcnhtcdhgxhqxnikjznqtdehxmujeyuakmneexkbbnofsprkivxyhoxkddculyeutyckpvmtvmwcrqgwlqatodrmhtdzhedkdvqhgdbawyfdgzov',
+            'expenses_type_id' =&gt; 5,
         ],
     ]
 );
@@ -649,7 +632,7 @@ print_r(json_decode((string) $body));</code></pre>
                 <input type="text"
                name="description"
                data-endpoint="PUTapi-expenses--id-"
-               value="hamlzwhipamauawyloctgioqcihybompyrvfujitztzakxmxohkekxopjvskunvjoyiylgadkxxwafzntdxogczfmhynuaiuxvntvuufaiekahygdgheinbzdfnjnakoucdotvjcknwwmxkvgcosfdoqyoujmouxvjqwanagffbamlldamphbwjprfvaxgen"
+               value="tmbcxueeuluhpcszlwobevmlpcusfejjnbyepdgeqqgzttnmizppvfkhnkdsooxsxuszipisstupqhbztdgteczpcilrqqcnhtcdhgxhqxnikjznqtdehxmujeyuakmneexkbbnofsprkivxyhoxkddculyeutyckpvmtvmwcrqgwlqatodrmhtdzhedkdvqhgdbawyfdgzov"
                data-component="body" hidden>
     <br>
 <p>Must be at least 3 characters. Must not be greater than 250 characters.</p>
@@ -659,7 +642,7 @@ print_r(json_decode((string) $body));</code></pre>
                 <input type="number"
                name="expenses_type_id"
                data-endpoint="PUTapi-expenses--id-"
-               value="1"
+               value="5"
                data-component="body" hidden>
     <br>
 <p>Must be at least 1. Must not be greater than 5.</p>
@@ -685,8 +668,8 @@ If success then response includes created item</p>
     --header "Accept: application/json" \
     --data "{
     \"value\": 0,
-    \"description\": \"bghmidyfjbafocmrvefkwkyaithekcjlyilcrzxlxmulzpfbgmrhwghmartmcun\",
-    \"expenses_type_id\": 4
+    \"description\": \"havzxdyxzlmpcjmqjjtncuxmjdtuelajqabjruvnpjpdrwuaibdosjptdlhelujtwpeoawgmqodfbsgootpvytwmygulvypyteokndbmujgzsiwrxisgykdxjtrlzxsvyflgobdckohtiiirwjxjapbwggazcpplieexowdrbhwlvnglangmhcoymateilawcsynqmqbhivzqpwqqyhciekjiamykihcqc\",
+    \"expenses_type_id\": 1
 }"
 </code></pre>
 
@@ -701,8 +684,8 @@ const headers = {
 
 let body = {
     "value": 0,
-    "description": "bghmidyfjbafocmrvefkwkyaithekcjlyilcrzxlxmulzpfbgmrhwghmartmcun",
-    "expenses_type_id": 4
+    "description": "havzxdyxzlmpcjmqjjtncuxmjdtuelajqabjruvnpjpdrwuaibdosjptdlhelujtwpeoawgmqodfbsgootpvytwmygulvypyteokndbmujgzsiwrxisgykdxjtrlzxsvyflgobdckohtiiirwjxjapbwggazcpplieexowdrbhwlvnglangmhcoymateilawcsynqmqbhivzqpwqqyhciekjiamykihcqc",
+    "expenses_type_id": 1
 };
 
 fetch(url, {
@@ -721,8 +704,8 @@ $response = $client-&gt;post(
         ],
         'json' =&gt; [
             'value' =&gt; 0,
-            'description' =&gt; 'bghmidyfjbafocmrvefkwkyaithekcjlyilcrzxlxmulzpfbgmrhwghmartmcun',
-            'expenses_type_id' =&gt; 4,
+            'description' =&gt; 'havzxdyxzlmpcjmqjjtncuxmjdtuelajqabjruvnpjpdrwuaibdosjptdlhelujtwpeoawgmqodfbsgootpvytwmygulvypyteokndbmujgzsiwrxisgykdxjtrlzxsvyflgobdckohtiiirwjxjapbwggazcpplieexowdrbhwlvnglangmhcoymateilawcsynqmqbhivzqpwqqyhciekjiamykihcqc',
+            'expenses_type_id' =&gt; 1,
         ],
     ]
 );
@@ -806,7 +789,7 @@ print_r(json_decode((string) $body));</code></pre>
                 <input type="text"
                name="description"
                data-endpoint="POSTapi-expenses"
-               value="bghmidyfjbafocmrvefkwkyaithekcjlyilcrzxlxmulzpfbgmrhwghmartmcun"
+               value="havzxdyxzlmpcjmqjjtncuxmjdtuelajqabjruvnpjpdrwuaibdosjptdlhelujtwpeoawgmqodfbsgootpvytwmygulvypyteokndbmujgzsiwrxisgykdxjtrlzxsvyflgobdckohtiiirwjxjapbwggazcpplieexowdrbhwlvnglangmhcoymateilawcsynqmqbhivzqpwqqyhciekjiamykihcqc"
                data-component="body" hidden>
     <br>
 <p>Must be at least 3 characters. Must not be greater than 250 characters.</p>
@@ -816,12 +799,138 @@ print_r(json_decode((string) $body));</code></pre>
                 <input type="number"
                name="expenses_type_id"
                data-endpoint="POSTapi-expenses"
-               value="4"
+               value="1"
                data-component="body" hidden>
     <br>
 <p>Must be at least 1. Must not be greater than 5.</p>
         </p>
         </form>
+
+            <h2 id="expenses-DELETEapi-expenses--id-">DELETE Delete</h2>
+
+<p>
+</p>
+
+<p>Remove the specified resource from storage.</p>
+
+<span id="example-requests-DELETEapi-expenses--id-">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request DELETE \
+    "http://localhost:10222/api/expenses/12" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:10222/api/expenses/12"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+
+<pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;delete(
+    'http://localhost:10222/api/expenses/12',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+</span>
+
+<span id="example-responses-DELETEapi-expenses--id-">
+            <blockquote>
+            <p>Example response (404, Resource does not exist):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;errors&quot;: [
+        {
+            &quot;status&quot;: 404,
+            &quot;title&quot;: &quot;Not Found&quot;,
+            &quot;detail&quot;: &quot;The resource does not exist.&quot;,
+            &quot;source&quot;: {
+                &quot;pointer&quot;: &quot;/api/expenses/&quot;,
+                &quot;method&quot;: &quot;DELETE&quot;
+            }
+        }
+    ]
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (200, Resource has been deleted):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;Expense deleted successfully&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEapi-expenses--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-expenses--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-expenses--id-"></code></pre>
+</span>
+<span id="execution-error-DELETEapi-expenses--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-expenses--id-"></code></pre>
+</span>
+<form id="form-DELETEapi-expenses--id-" data-method="DELETE"
+      data-path="api/expenses/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-expenses--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-expenses--id-"
+                    onclick="tryItOut('DELETEapi-expenses--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-expenses--id-"
+                    onclick="cancelTryOut('DELETEapi-expenses--id-');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-expenses--id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/expenses/{id}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="id"
+               data-endpoint="DELETEapi-expenses--id-"
+               value="12"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the expense.</p>
+            </p>
+                    </form>
 
     
 

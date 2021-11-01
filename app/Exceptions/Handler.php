@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use App\Traits\JsonResponsesTrait;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\ValidationException;
@@ -59,6 +60,14 @@ class Handler extends ExceptionHandler
             return $this->jsonError(
                 message: $e->getMessage(),
                 status: $e->getStatusCode(),
+            );
+        }
+
+        // ModelNotFoundException
+        if ($e instanceof ModelNotFoundException) {
+            return $this->jsonError(
+                message: "The resource does not exist.",
+                status: 404,
             );
         }
 

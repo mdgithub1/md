@@ -286,4 +286,28 @@ class ExpensesTest extends TestCase
             ->assertStatus(400)
             ->assertJsonStructure($this->jsonError);
     }
+
+    /**
+     * Delete expense using valid id
+     */
+    public function testDeleteRequestWithCorrectId(int $identifier = 2): void
+    {
+        $response = $this->json('DELETE', $this->baseUrl . $identifier);
+
+        $response
+            ->assertStatus(200)
+            ->assertJsonFragment([
+                "message" => "Expense deleted successfully"
+            ]);
+    }
+
+    /**
+     * Delete expense using invalid id
+     */
+    public function testDeleteRequestWithIncorrectId(int $identifier = 99999999): void
+    {
+        $response = $this->json('DELETE', $this->baseUrl . $identifier);
+
+        $response->assertStatus(404);
+    }
 }
