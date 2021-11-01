@@ -175,7 +175,7 @@ print_r(json_decode((string) $body));</code></pre>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 57
+x-ratelimit-remaining: 59
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -183,18 +183,15 @@ access-control-allow-origin: *
 <code class="language-json">{
     &quot;data&quot;: [
         {
-            &quot;expense_id&quot;: 3,
-            &quot;expense_value&quot;: 145.89,
-            &quot;expense_description&quot;: &quot;Lorem ipsum&quot;,
-            &quot;expense_type&quot;: {
-                &quot;id&quot;: 2,
-                &quot;description&quot;: &quot;Food&quot;
-            }
+            &quot;expense_id&quot;: 11,
+            &quot;expense_value&quot;: 0,
+            &quot;expense_description&quot;: &quot;&quot;,
+            &quot;expense_type&quot;: null
         },
         {
-            &quot;expense_id&quot;: 9,
-            &quot;expense_value&quot;: 2344.47,
-            &quot;expense_description&quot;: &quot;Reiciendis et autem est.&quot;,
+            &quot;expense_id&quot;: 12,
+            &quot;expense_value&quot;: 147.11,
+            &quot;expense_description&quot;: &quot;Lorem Ipsum&quot;,
             &quot;expense_type&quot;: {
                 &quot;id&quot;: 4,
                 &quot;description&quot;: &quot;Transport&quot;
@@ -203,14 +200,14 @@ access-control-allow-origin: *
     ],
     &quot;links&quot;: {
         &quot;first&quot;: &quot;http://localhost:10222/api/expenses?per_page=2&amp;sort=value&amp;filter%5Bexpenses_type_id%5D=4&amp;page=1&quot;,
-        &quot;last&quot;: &quot;http://localhost:10222/api/expenses?per_page=2&amp;sort=value&amp;filter%5Bexpenses_type_id%5D=4&amp;page=5&quot;,
+        &quot;last&quot;: &quot;http://localhost:10222/api/expenses?per_page=2&amp;sort=value&amp;filter%5Bexpenses_type_id%5D=4&amp;page=8&quot;,
         &quot;prev&quot;: null,
         &quot;next&quot;: &quot;http://localhost:10222/api/expenses?per_page=2&amp;sort=value&amp;filter%5Bexpenses_type_id%5D=4&amp;page=2&quot;
     },
     &quot;meta&quot;: {
         &quot;current_page&quot;: 1,
         &quot;from&quot;: 1,
-        &quot;last_page&quot;: 5,
+        &quot;last_page&quot;: 8,
         &quot;links&quot;: [
             {
                 &quot;url&quot;: null,
@@ -243,6 +240,21 @@ access-control-allow-origin: *
                 &quot;active&quot;: false
             },
             {
+                &quot;url&quot;: &quot;http://localhost:10222/api/expenses?per_page=2&amp;sort=value&amp;filter%5Bexpenses_type_id%5D=4&amp;page=6&quot;,
+                &quot;label&quot;: &quot;6&quot;,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://localhost:10222/api/expenses?per_page=2&amp;sort=value&amp;filter%5Bexpenses_type_id%5D=4&amp;page=7&quot;,
+                &quot;label&quot;: &quot;7&quot;,
+                &quot;active&quot;: false
+            },
+            {
+                &quot;url&quot;: &quot;http://localhost:10222/api/expenses?per_page=2&amp;sort=value&amp;filter%5Bexpenses_type_id%5D=4&amp;page=8&quot;,
+                &quot;label&quot;: &quot;8&quot;,
+                &quot;active&quot;: false
+            },
+            {
                 &quot;url&quot;: &quot;http://localhost:10222/api/expenses?per_page=2&amp;sort=value&amp;filter%5Bexpenses_type_id%5D=4&amp;page=2&quot;,
                 &quot;label&quot;: &quot;Next &amp;raquo;&quot;,
                 &quot;active&quot;: false
@@ -251,7 +263,7 @@ access-control-allow-origin: *
         &quot;path&quot;: &quot;http://localhost:10222/api/expenses&quot;,
         &quot;per_page&quot;: 2,
         &quot;to&quot;: 2,
-        &quot;total&quot;: 10
+        &quot;total&quot;: 16
     }
 }</code>
  </pre>
@@ -350,12 +362,12 @@ access-control-allow-origin: *
 
 
 <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:10222/api/expenses/5" \
+    --get "http://localhost:10222/api/expenses/11" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
 
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:10222/api/expenses/5"
+    "http://localhost:10222/api/expenses/11"
 );
 
 const headers = {
@@ -370,7 +382,7 @@ fetch(url, {
 
 <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost:10222/api/expenses/5',
+    'http://localhost:10222/api/expenses/11',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
@@ -412,7 +424,7 @@ print_r(json_decode((string) $body));</code></pre>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 56
+x-ratelimit-remaining: 58
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -420,11 +432,11 @@ access-control-allow-origin: *
 <code class="language-json">{
     &quot;data&quot;: {
         &quot;expense_id&quot;: 1,
-        &quot;expense_value&quot;: 2825.55,
-        &quot;expense_description&quot;: &quot;Qui illo et dolorum eum.&quot;,
+        &quot;expense_value&quot;: 340.68,
+        &quot;expense_description&quot;: &quot;Amet et itaque unde quo.&quot;,
         &quot;expense_type&quot;: {
-            &quot;id&quot;: 1,
-            &quot;description&quot;: &quot;Entertainment&quot;
+            &quot;id&quot;: 2,
+            &quot;description&quot;: &quot;Food&quot;
         }
     }
 }</code>
@@ -475,7 +487,7 @@ access-control-allow-origin: *
                 <input type="number"
                name="id"
                data-endpoint="GETapi-expenses--id-"
-               value="5"
+               value="11"
                data-component="url" hidden>
     <br>
 <p>The ID of the expense.</p>
@@ -488,7 +500,7 @@ access-control-allow-origin: *
 </p>
 
 <p>Update resource based on request.
-If success then response includes properties from Groups &quot;edit&quot;.</p>
+If success then response includes updated item</p>
 <aside class="notice"><b>Try it out</b> - The <b>value</b> in documentation gets only integer. Seems to be a new bug. </aside>
 
 <span id="example-requests-PUTapi-expenses--id-">
@@ -501,8 +513,8 @@ If success then response includes properties from Groups &quot;edit&quot;.</p>
     --header "Accept: application/json" \
     --data "{
     \"value\": 0,
-    \"description\": \"famulsjsaemewscterjmfrpyswhbsspfnhxludonjwqscqdncegolpgbpjknkkvkvpdxhshexphdocgmpjvtmrejjyaudifduluxujaokatngbxpyunguikkdryffkgmesdyxyurjogigcrs\",
-    \"expenses_type_id\": 5
+    \"description\": \"hamlzwhipamauawyloctgioqcihybompyrvfujitztzakxmxohkekxopjvskunvjoyiylgadkxxwafzntdxogczfmhynuaiuxvntvuufaiekahygdgheinbzdfnjnakoucdotvjcknwwmxkvgcosfdoqyoujmouxvjqwanagffbamlldamphbwjprfvaxgen\",
+    \"expenses_type_id\": 1
 }"
 </code></pre>
 
@@ -517,8 +529,8 @@ const headers = {
 
 let body = {
     "value": 0,
-    "description": "famulsjsaemewscterjmfrpyswhbsspfnhxludonjwqscqdncegolpgbpjknkkvkvpdxhshexphdocgmpjvtmrejjyaudifduluxujaokatngbxpyunguikkdryffkgmesdyxyurjogigcrs",
-    "expenses_type_id": 5
+    "description": "hamlzwhipamauawyloctgioqcihybompyrvfujitztzakxmxohkekxopjvskunvjoyiylgadkxxwafzntdxogczfmhynuaiuxvntvuufaiekahygdgheinbzdfnjnakoucdotvjcknwwmxkvgcosfdoqyoujmouxvjqwanagffbamlldamphbwjprfvaxgen",
+    "expenses_type_id": 1
 };
 
 fetch(url, {
@@ -537,8 +549,8 @@ $response = $client-&gt;put(
         ],
         'json' =&gt; [
             'value' =&gt; 0,
-            'description' =&gt; 'famulsjsaemewscterjmfrpyswhbsspfnhxludonjwqscqdncegolpgbpjknkkvkvpdxhshexphdocgmpjvtmrejjyaudifduluxujaokatngbxpyunguikkdryffkgmesdyxyurjogigcrs',
-            'expenses_type_id' =&gt; 5,
+            'description' =&gt; 'hamlzwhipamauawyloctgioqcihybompyrvfujitztzakxmxohkekxopjvskunvjoyiylgadkxxwafzntdxogczfmhynuaiuxvntvuufaiekahygdgheinbzdfnjnakoucdotvjcknwwmxkvgcosfdoqyoujmouxvjqwanagffbamlldamphbwjprfvaxgen',
+            'expenses_type_id' =&gt; 1,
         ],
     ]
 );
@@ -547,7 +559,26 @@ print_r(json_decode((string) $body));</code></pre>
 </span>
 
 <span id="example-responses-PUTapi-expenses--id-">
-</span>
+            <blockquote>
+            <p>Example response (400, Too short description):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;errors&quot;: [
+        {
+            &quot;status&quot;: 400,
+            &quot;title&quot;: &quot;Bad Request&quot;,
+            &quot;detail&quot;: &quot;The description must be at least 3 characters.&quot;,
+            &quot;source&quot;: {
+                &quot;pointer&quot;: &quot;/api/expenses/&quot;,
+                &quot;method&quot;: &quot;PUT&quot;
+            }
+        }
+    ]
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-PUTapi-expenses--id-" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-PUTapi-expenses--id-"></span>:
@@ -618,7 +649,7 @@ print_r(json_decode((string) $body));</code></pre>
                 <input type="text"
                name="description"
                data-endpoint="PUTapi-expenses--id-"
-               value="famulsjsaemewscterjmfrpyswhbsspfnhxludonjwqscqdncegolpgbpjknkkvkvpdxhshexphdocgmpjvtmrejjyaudifduluxujaokatngbxpyunguikkdryffkgmesdyxyurjogigcrs"
+               value="hamlzwhipamauawyloctgioqcihybompyrvfujitztzakxmxohkekxopjvskunvjoyiylgadkxxwafzntdxogczfmhynuaiuxvntvuufaiekahygdgheinbzdfnjnakoucdotvjcknwwmxkvgcosfdoqyoujmouxvjqwanagffbamlldamphbwjprfvaxgen"
                data-component="body" hidden>
     <br>
 <p>Must be at least 3 characters. Must not be greater than 250 characters.</p>
@@ -628,7 +659,164 @@ print_r(json_decode((string) $body));</code></pre>
                 <input type="number"
                name="expenses_type_id"
                data-endpoint="PUTapi-expenses--id-"
-               value="5"
+               value="1"
+               data-component="body" hidden>
+    <br>
+<p>Must be at least 1. Must not be greater than 5.</p>
+        </p>
+        </form>
+
+            <h2 id="expenses-POSTapi-expenses">POST Create</h2>
+
+<p>
+</p>
+
+<p>Create new resource based on request.
+If success then response includes created item</p>
+<aside class="notice"><b>Try it out</b> - The <b>value</b> in documentation gets only integer. Seems to be a new bug. </aside>
+
+<span id="example-requests-POSTapi-expenses">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request POST \
+    "http://localhost:10222/api/expenses" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"value\": 0,
+    \"description\": \"bghmidyfjbafocmrvefkwkyaithekcjlyilcrzxlxmulzpfbgmrhwghmartmcun\",
+    \"expenses_type_id\": 4
+}"
+</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:10222/api/expenses"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "value": 0,
+    "description": "bghmidyfjbafocmrvefkwkyaithekcjlyilcrzxlxmulzpfbgmrhwghmartmcun",
+    "expenses_type_id": 4
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+
+<pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://localhost:10222/api/expenses',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'value' =&gt; 0,
+            'description' =&gt; 'bghmidyfjbafocmrvefkwkyaithekcjlyilcrzxlxmulzpfbgmrhwghmartmcun',
+            'expenses_type_id' =&gt; 4,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+</span>
+
+<span id="example-responses-POSTapi-expenses">
+            <blockquote>
+            <p>Example response (400, Too short description):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;errors&quot;: [
+        {
+            &quot;status&quot;: 400,
+            &quot;title&quot;: &quot;Bad Request&quot;,
+            &quot;detail&quot;: &quot;The description must be at least 3 characters.&quot;,
+            &quot;source&quot;: {
+                &quot;pointer&quot;: &quot;/api/expenses/&quot;,
+                &quot;method&quot;: &quot;POST&quot;
+            }
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-expenses" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-expenses"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-expenses"></code></pre>
+</span>
+<span id="execution-error-POSTapi-expenses" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-expenses"></code></pre>
+</span>
+<form id="form-POSTapi-expenses" data-method="POST"
+      data-path="api/expenses"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-expenses', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-expenses"
+                    onclick="tryItOut('POSTapi-expenses');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-expenses"
+                    onclick="cancelTryOut('POSTapi-expenses');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-expenses" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/expenses</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>value</code></b>&nbsp;&nbsp;<small>number</small>  &nbsp;
+                <input type="number"
+               name="value"
+               data-endpoint="POSTapi-expenses"
+               value="0"
+               data-component="body" hidden>
+    <br>
+<p>Must be at least 0.01.</p>
+        </p>
+                <p>
+            <b><code>description</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="description"
+               data-endpoint="POSTapi-expenses"
+               value="bghmidyfjbafocmrvefkwkyaithekcjlyilcrzxlxmulzpfbgmrhwghmartmcun"
+               data-component="body" hidden>
+    <br>
+<p>Must be at least 3 characters. Must not be greater than 250 characters.</p>
+        </p>
+                <p>
+            <b><code>expenses_type_id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="expenses_type_id"
+               data-endpoint="POSTapi-expenses"
+               value="4"
                data-component="body" hidden>
     <br>
 <p>Must be at least 1. Must not be greater than 5.</p>

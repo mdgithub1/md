@@ -241,4 +241,49 @@ class ExpensesTest extends TestCase
             ->assertStatus(400)
             ->assertJsonStructure($this->jsonError);
     }
+
+    /**
+     * Create expense with correct data
+     */
+    public function testCreateRequestWithCorrectData(
+        float $value = 88.99,
+        string $description = "Lorem Ipsum",
+        int $type = 5
+    ):void
+    {
+
+        $data = [
+            'value' => $value,
+            'description' => $description,
+            'expenses_type_id' => $type,
+        ];
+
+        $response = $this->json('POST', $this->baseUrl, $data);
+
+        $response
+            ->assertSuccessful()
+            ->assertJsonStructure($this->jsonItem);
+    }
+
+    /**
+     * Create expense with incorrect data (failed validation)
+     */
+    public function testCreateRequestWithIncorrectData(
+        string $value = "wrong_type",
+        string $description = "Lorem Ipsum",
+        int $type = 1
+    ): void
+    {
+        $data = [
+            'value' => $value,
+            'description' => $description,
+            'expenses_type_id' => $type,
+        ];
+
+        $response = $this->json('POST', $this->baseUrl, $data);
+
+        $response
+            ->assertStatus(400)
+            ->assertJsonStructure($this->jsonError);
+    }
 }

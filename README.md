@@ -26,19 +26,18 @@ Based on [Criteria](docs/project/001-criteria.md) project should be focused on:
    - [ER Diagram](docs/erd/erd_diagram.md)
    - [General API flowchart](docs/flowcharts/000-geenral-flowchart.md)
  - [How to run](#how-to-run)
- - [WIP] [How to test](#how-to-test)
+ - [How to test](#how-to-test)
  - [Project issues](#project-issues)
 
 ## How to run
 ```bash
-/*
 |----------------------------------------------------------------------
 | The first run
 |     Initial requirements:
 |     - PHP ^8.0
 |     - Docker | docker-compose ^1.29
 |----------------------------------------------------------------------
-*/
+
 // Clone the repository and update .env
 git clone https://github.com/mdgithub1/md.git && cd md && cp .env.local .env && composer install
 
@@ -48,29 +47,46 @@ docker pull sdmd/base-nginx-php-fpm8.0-bullseye && docker pull mariadb:10.4
 // Run containers
 docker-compose -f docker-compose.yml -f docker-compose.local.yml up --build
 
-/*
 |----------------------------------------------------------------------
 | Start / Stop
 |----------------------------------------------------------------------
-*/
+
 // Start containers
 docker-compose -f docker-compose.yml -f docker-compose.local.yml up
 
 // Stop & remove containers
 docker-compose -f docker-compose.yml -f docker-compose.local.yml down
 
-/*
 |----------------------------------------------------------------------
 | Remove enviroment
 |----------------------------------------------------------------------
-*/
+
 docker-compose -f docker-compose.yml -f docker-compose.local.yml down --rmi all -v --remove-orphans
 ```
 ### Access
 - API documentation: [http://localhost:10222/docs](http://localhost:10222/docs)
 - API routes: [http://localhost:10222/api/*](http://localhost:10222/api/expenses)
 ## How to test
-_WIP_
+```bash
+|----------------------------------------------------------------------
+| PHPUnit Feature tests (transactional)
+|----------------------------------------------------------------------
+
+docker exec -it md-app php artisan test
+
+|----------------------------------------------------------------------
+| "Try it out" option in API documentation
+|----------------------------------------------------------------------
+
+@link http://localhost:10222/docs
+
+|----------------------------------------------------------------------
+| Postman (or eqvivalent)
+|----------------------------------------------------------------------
+
+Follow API documntation
+Required headers: Accept: application/json
+```
 
 ## Project issues
  - [x] New repository
@@ -81,7 +97,7 @@ _WIP_
    - [x] General API flowchart
    - [x] Project issues/tasks
    - [x] How to run
-   - [ ] How to test
+   - [x] How to test
  - [x] Project setup
    - [x] Install Laravel with dependencies
    - [x] Docker setup
@@ -96,10 +112,9 @@ _WIP_
    - [x] Read
      - [x] testShowExistedExpense (200, JSON structure)
      - [x] testShowNonExistedExpense (4xx)
-   - [ ] Create
-     - [ ] testCreateExpensesWithValidData (2xx)
-     - [ ] testCreateExpensesWithInvalidData (4xx)
-     - [ ] testCreateExpensesWithInvalidTypeId (4xx)
+   - [x] Create
+     - [x] testCreateExpensesWithValidData (2xx)
+     - [x] testCreateExpensesWithInvalidData (4xx)
    - [x] Update
      - [x] testUpdateInvalidData (2xx)
      - [x] testUpdateInvalidData (4xx)
@@ -110,8 +125,8 @@ _WIP_
    - [x] API routes
    - [x] Listing _GET_ / _index()_
    - [x] Read _GET_ / _show()_
-   - [ ] Create _POST_ / _store()_
-     - [ ] with Laravel FormRequest validation
+   - [x] Create _POST_ / _store()_
+     - [x] with Laravel FormRequest validation
    - [x] Update _PUT/PATCH_ / _update()_
      - [x] with Laravel FormRequest validation
    - [ ] Delete _DELETE_ / _destroy()_

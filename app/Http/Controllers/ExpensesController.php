@@ -60,7 +60,7 @@ class ExpensesController extends Controller
      * PUT Update
      *
      * Update resource based on request.
-     * If success then response includes properties from Groups "edit".
+     * If success then response includes updated item
      *
      * <aside class="notice"><b>Try it out</b> - The <b>value</b> in documentation gets only integer. Seems to be a new bug. </aside>
      *
@@ -68,11 +68,31 @@ class ExpensesController extends Controller
      *
      * @urlParam id int required Identifier (PK) value. Example: 2
      *
+     * @response status=400 scenario="Too short description" {"errors": [{"status": 400, "title": "Bad Request", "detail": "The description must be at least 3 characters.","source": { "pointer": "/api/expenses/", "method": "PUT"}}]}
      */
     public function update(UpdateExpenseRequest $request, Expenses $expense): Response|ExpensesResource
     {
         $expense->update($request->all());
 
         return new ExpensesResource($expense);
+    }
+
+    /**
+     * POST Create
+     *
+     * Create new resource based on request.
+     * If success then response includes created item
+     *
+     * <aside class="notice"><b>Try it out</b> - The <b>value</b> in documentation gets only integer. Seems to be a new bug. </aside>
+     *
+     * @group Expenses
+     *
+     * @response status=400 scenario="Too short description" {"errors": [{"status": 400, "title": "Bad Request", "detail": "The description must be at least 3 characters.","source": { "pointer": "/api/expenses/", "method": "POST"}}]}
+     */
+    public function store(UpdateExpenseRequest $request, Expenses $expense): Response|ExpensesResource
+    {
+        $created = $expense->create($request->all());
+
+        return new ExpensesResource($expense::find($created->id));
     }
 }
