@@ -24,7 +24,9 @@ Based on [Criteria](docs/project/001-criteria.md) project should be focused on:
      - [Authentication and User Management must be omitted](docs/adr/006-no-authentication-or-user-managment.md)
      - [Use Spatie Query Builder](docs/adr/007-spatie-builder-as-query-builder.md)
    - [ER Diagram](docs/erd/erd_diagram.md)
-   - [General API flowchart](docs/flowcharts/000-geenral-flowchart.md)
+   - Flowcharts
+     - [General API flowchart](docs/flowcharts/000-geenral-flowchart.md)
+     - [API Expense PUT request flowchart](docs/flowcharts/001-expense-put-flowchart.md)
  - [How to run](#how-to-run)
  - [How to test](#how-to-test)
  - [Project issues](#project-issues)
@@ -138,4 +140,4 @@ docker exec -it md-app php artisan migrate:fresh --seed
    - [x] Delete _DELETE_ / _destroy()_
  - [x] Errors handling 
    - [x] Laravel provides default error handling, however, add sample of Handler to provide custom messages/service codes
- - [ ] Flowchart for sample request
+ - [x] Flowchart for sample request
