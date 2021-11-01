@@ -102,6 +102,9 @@ class ExpensesController extends Controller
      * Remove the specified resource from storage.
      *
      * @group Expenses
+     *
+     * @response status=404 scenario="Resource does not exist" {"errors": [{"status": 404, "title": "Not Found", "detail": "The resource does not exist.","source": { "pointer": "/api/expenses/", "method": "DELETE"}}]}
+     * @response status=200 scenario="Resource has been deleted" {"message": "Expense deleted successfully"}
      */
     public function destroy(Expenses $expense): JsonResponse|Response
     {
