@@ -95,4 +95,18 @@ class ExpensesController extends Controller
 
         return new ExpensesResource($expense::find($created->id));
     }
+
+    /**
+     * DELETE Delete
+     *
+     * Remove the specified resource from storage.
+     *
+     * @group Expenses
+     */
+    public function destroy(Expenses $expense): JsonResponse|Response
+    {
+        $expense->delete();
+
+        return $this->jsonSuccess("Expense deleted successfully");
+    }
 }
