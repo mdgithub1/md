@@ -12,7 +12,17 @@ class ExpensesTest extends TestCase
     protected string $baseUrl;
 
     /**
-     * Product item structure JSON
+     * JSON Pattern
+     */
+    protected array $jsonItemPattern;
+
+    /**
+     * Single item structure JSON
+     */
+    protected array $jsonItem;
+
+    /**
+     * Item list structure JSON
      */
     protected array $jsonResponseStructure;
 
@@ -30,20 +40,28 @@ class ExpensesTest extends TestCase
     {
         $this->baseUrl = env('APP_URL') . '/api/expenses/';
 
-        // Correct response JSON
+        // Pattern JSON
+        $this->jsonItemPattern = [
+            "expense_id",
+            "expense_value",
+            "expense_description",
+            "expense_type" => [
+                "id",
+                "description",
+            ],
+        ];
+
+        // Correct response single item JSON
+        $this->jsonItem = [
+            "data" => $this->jsonItemPattern,
+        ];
+
+        // Correct response items list JSON
         $this->jsonResponseStructure =
             [
                 "data" => [
-                    "*" => [
-                        "expense_id",
-                        "expense_value",
-                        "expense_description",
-                        "expense_type" => [
-                            "id",
-                            "description",
-                        ],
+                    "*" => $this->jsonItemPattern,
                     ],
-                ]
             ];
 
         // Error response JSON
@@ -118,11 +136,11 @@ class ExpensesTest extends TestCase
      */
     public function testIndexPaginatedItemsPerPage(int $perPage = 2): void
     {
-        $response = $this->get(uri: $this->baseUrl . "?per_page=" . $perPage);
+        $response = $this->get( $this->baseUrl . "?per_page=" . $perPage);
 
         $response
             ->assertSuccessful()
-            ->assertJsonCount(count: $perPage, key: "data");
+            ->assertJsonCount($perPage, "data");
     }
 
     /**
@@ -130,11 +148,11 @@ class ExpensesTest extends TestCase
      */
     public function testIndexSortPaginatedItemsPerPage (int $perPage = 3, string $sort = '-value'): void
     {
-        $response = $this->get(uri: $this->baseUrl . "?per_page=" . $perPage . "&sort=" . $sort);
+        $response = $this->get( $this->baseUrl . "?per_page=" . $perPage . "&sort=" . $sort);
 
         $response
             ->assertSuccessful()
-            ->assertJsonCount(count: $perPage, key: "data");
+            ->assertJsonCount($perPage, "data");
     }
 
     /**
@@ -142,10 +160,35 @@ class ExpensesTest extends TestCase
      */
     public function testIndexSortPaginatedItemsWithWrongPropertyName (string $sort = 'lorem'): void
     {
-        $response = $this->get(uri: $this->baseUrl . "?sort=" . $sort);
+        $response = $this->get($this->baseUrl . "?sort=" . $sort);
 
         $response
-            ->assertStatus(status: 400)
+            ->assertStatus(400)
+            ->assertJsonStructure($this->jsonError);
+    }
+
+    /**
+     * Test single item response
+     */
+    public function testShow(int $identifier = 3): void
+    {
+        $response = $this->get($this->baseUrl . $identifier);
+
+        $response
+            ->assertSuccessful()
+            ->assertJsonStructure($this->jsonItem);
+
+    }
+
+    /**
+     * Test the error response if the row does not exist
+     */
+    public function testShowNonExistedItem(int $identifier = 99999999999999): void
+    {
+        $response = $this->get($this->baseUrl . $identifier);
+
+        $response
+            ->assertStatus(400)
             ->assertJsonStructure($this->jsonError);
     }
 }

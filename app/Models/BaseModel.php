@@ -15,10 +15,10 @@ class BaseModel extends Model
     /**
      * @inheritdoc
      */
-    protected $connection = 'mysql';
+    protected string $connection = 'mysql';
 
     /**
      * @inheritdoc
      */
-    public $timestamps = false;
+    public bool $timestamps = false;
 }
