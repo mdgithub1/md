@@ -105,7 +105,7 @@ class ExpensesTest extends TestCase
     /**
      * Test paginated list with applied filters in response
      */
-    public function testIndexWithProductTypeFilters(array $filters = ['expenses_type_id' => 4]): void
+    public function testIndexWithProductTypeFilters(array $filters = ['expenses_type_id' => 1]): void
     {
         foreach ($filters as $filter => $val) {
             $response = $this->get($this->baseUrl . "?filter[$filter]=$val");
@@ -166,7 +166,7 @@ class ExpensesTest extends TestCase
         $response = $this->get($this->baseUrl . "?sort=" . $sort);
 
         $response
-            ->assertStatus(400)
+            ->assertStatus(422)
             ->assertJsonStructure($this->jsonError);
     }
 
@@ -238,7 +238,7 @@ class ExpensesTest extends TestCase
         $response = $this->json('PUT', $this->baseUrl . $identifier, $data);
 
         $response
-            ->assertStatus(400)
+            ->assertStatus(422)
             ->assertJsonStructure($this->jsonError);
     }
 
@@ -283,7 +283,7 @@ class ExpensesTest extends TestCase
         $response = $this->json('POST', $this->baseUrl, $data);
 
         $response
-            ->assertStatus(400)
+            ->assertStatus(422)
             ->assertJsonStructure($this->jsonError);
     }
 

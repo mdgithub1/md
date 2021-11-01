@@ -18,6 +18,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Factories
-        Expenses::factory(10)->create();
+        Expenses::factory(25)->create();
     }
 }
