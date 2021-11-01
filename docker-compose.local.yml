@@ -21,6 +21,7 @@ services:
       - MYSQL_USER=${DB_USERNAME}
       - MYSQL_PASSWORD=${DB_PASSWORD}
       - SERVICE_NAME=mysql
+    command: mysqld --sql_mode=""
     networks:
       backend:
         aliases:
