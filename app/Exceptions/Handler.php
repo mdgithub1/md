@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use App\Traits\JsonResponsesTrait;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Validation\ValidationException;
 use Spatie\QueryBuilder\Exceptions\InvalidSortQuery;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -74,6 +75,13 @@ class Handler extends ExceptionHandler
             return $this->jsonError(
                 message: $e->getMessage(),
                 status: $e->getStatusCode(),
+            );
+        }
+
+        // ValidationException
+        if ($e instanceof ValidationException) {
+            return $this->jsonError(
+                message: $e->validator->getMessageBag()->toArray(),
             );
         }
 

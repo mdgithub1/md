@@ -93,28 +93,27 @@ _WIP_
  - [ ] PHPUnit Feature tests (limit volume; just examples)
    - [x] Listing
      - [x] testIndexExistedExpense (200, JSON structure)
-   - [ ] Read
-     - testShowExistedExpense (200, JSON structure)
-     - testShowNonExistedExpense (4xx)
+   - [x] Read
+     - [x] testShowExistedExpense (200, JSON structure)
+     - [x] testShowNonExistedExpense (4xx)
    - [ ] Create
-     - testCreateExpensesWithValidData (2xx)
-     - testCreateExpensesWithInvalidData (4xx)
-     - testCreateExpensesWithInvalidTypeId (4xx)
-   - [ ] Update
-     - [ ] testUpdateValidId (2xx)
-     - [ ] testUpdateInvaldId (4xx)
-     - [ ] testUpdateInvalidData (4xx)
+     - [ ] testCreateExpensesWithValidData (2xx)
+     - [ ] testCreateExpensesWithInvalidData (4xx)
+     - [ ] testCreateExpensesWithInvalidTypeId (4xx)
+   - [x] Update
+     - [x] testUpdateInvalidData (2xx)
+     - [x] testUpdateInvalidData (4xx)
    - [ ] Delete
      - [ ] testDeleteExistedId (200)
      - [ ] testDeleteNonExistedId (4xx)
  - [ ] Expenses API endpoint for CRUD using API Resources (Eager / no need to use lazy loading for project requirements)
    - [x] API routes
    - [x] Listing _GET_ / _index()_
-   - [ ] Read _GET_ / _show()_
+   - [x] Read _GET_ / _show()_
    - [ ] Create _POST_ / _store()_
      - [ ] with Laravel FormRequest validation
-   - [ ] Update _PUT/PATCH_ / _update()_
-     - [ ] with Laravel FormRequest validation
+   - [x] Update _PUT/PATCH_ / _update()_
+     - [x] with Laravel FormRequest validation
    - [ ] Delete _DELETE_ / _destroy()_
  - [x] Errors handling 
    - [x] Laravel provides default error handling, however, add sample of Handler to provide custom messages/service codes

@@ -14,6 +14,15 @@ class Expenses extends BaseModel
     /**
      * @inheritdoc
      */
+    protected array $fillable = [
+        'value',
+        'description',
+        'expenses_type_id',
+    ];
+
+    /**
+     * @inheritdoc
+     */
     protected array $with = [
         'expenseType',
     ];

@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
 
 /**
  * Trait JsonResponsesTrait
@@ -41,6 +42,22 @@ trait JsonResponsesTrait
                     ],
                 ]
             )
+            ->header(key: 'Content-Type', values: 'application/json');
+    }
+
+    /**
+     * Return success message | Confirmation
+     *
+     * @param string $message Text message
+     * @param int $status     HTTP status; must be 200 >=< 299
+     * @return JsonResponse
+     */
+    public function jsonSuccess(string $message = 'OK', int $status = 200): JsonResponse
+    {
+        return response()
+            ->json()
+            ->setStatusCode(code: $status, text: Response::$statusTexts[$status])
+            ->setData(data: ["message" => $message])
             ->header(key: 'Content-Type', values: 'application/json');
     }
 }

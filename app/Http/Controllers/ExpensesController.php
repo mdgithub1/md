@@ -3,12 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Queries\ExpensesQuery;
+use App\Http\Requests\UpdateExpenseRequest;
 use App\Http\Resources\ExpensesResource;
 use App\Models\Expenses;
+use App\Traits\JsonResponsesTrait;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Http\Response;
 
 class ExpensesController extends Controller
 {
+    use JsonResponsesTrait;
+
     protected string $resourceClass = ExpensesResource::class;
     protected string $queryClass = ExpensesQuery::class;
     protected string $eloquentClass = Expenses::class;
@@ -48,5 +54,25 @@ class ExpensesController extends Controller
     public function show(Expenses $expenses, int $id) : ExpensesResource
     {
         return new ExpensesResource($expenses::find($id));
+    }
+
+    /**
+     * PUT Update
+     *
+     * Update resource based on request.
+     * If success then response includes properties from Groups "edit".
+     *
+     * <aside class="notice"><b>Try it out</b> - The <b>value</b> in documentation gets only integer. Seems to be a new bug. </aside>
+     *
+     * @group Expenses
+     *
+     * @urlParam id int required Identifier (PK) value. Example: 2
+     *
+     */
+    public function update(UpdateExpenseRequest $request, Expenses $expense): Response|ExpensesResource
+    {
+        $expense->update($request->all());
+
+        return new ExpensesResource($expense);
     }
 }
