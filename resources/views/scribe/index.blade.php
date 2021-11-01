@@ -54,7 +54,7 @@
                             <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
                     </ul>
             <ul class="toc-footer" id="last-updated">
-            <li>Last updated: October 31 2021</li>
+            <li>Last updated: November 1 2021</li>
         </ul>
 </div>
 <div class="page-wrapper">
@@ -175,7 +175,7 @@ print_r(json_decode((string) $body));</code></pre>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 59
+x-ratelimit-remaining: 57
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -184,11 +184,11 @@ access-control-allow-origin: *
     &quot;data&quot;: [
         {
             &quot;expense_id&quot;: 3,
-            &quot;expense_value&quot;: 58.91,
-            &quot;expense_description&quot;: &quot;Laudantium aut et cum.&quot;,
+            &quot;expense_value&quot;: 145.89,
+            &quot;expense_description&quot;: &quot;Lorem ipsum&quot;,
             &quot;expense_type&quot;: {
-                &quot;id&quot;: 4,
-                &quot;description&quot;: &quot;Transport&quot;
+                &quot;id&quot;: 2,
+                &quot;description&quot;: &quot;Food&quot;
             }
         },
         {
@@ -350,12 +350,12 @@ access-control-allow-origin: *
 
 
 <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:10222/api/expenses/9" \
+    --get "http://localhost:10222/api/expenses/5" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre>
 
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:10222/api/expenses/9"
+    "http://localhost:10222/api/expenses/5"
 );
 
 const headers = {
@@ -370,7 +370,7 @@ fetch(url, {
 
 <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost:10222/api/expenses/9',
+    'http://localhost:10222/api/expenses/5',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
@@ -412,7 +412,7 @@ print_r(json_decode((string) $body));</code></pre>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 58
+x-ratelimit-remaining: 56
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -475,12 +475,165 @@ access-control-allow-origin: *
                 <input type="number"
                name="id"
                data-endpoint="GETapi-expenses--id-"
-               value="9"
+               value="5"
                data-component="url" hidden>
     <br>
 <p>The ID of the expense.</p>
             </p>
                     </form>
+
+            <h2 id="expenses-PUTapi-expenses--id-">PUT Update</h2>
+
+<p>
+</p>
+
+<p>Update resource based on request.
+If success then response includes properties from Groups &quot;edit&quot;.</p>
+<aside class="notice"><b>Try it out</b> - The <b>value</b> in documentation gets only integer. Seems to be a new bug. </aside>
+
+<span id="example-requests-PUTapi-expenses--id-">
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request PUT \
+    "http://localhost:10222/api/expenses/2" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"value\": 0,
+    \"description\": \"famulsjsaemewscterjmfrpyswhbsspfnhxludonjwqscqdncegolpgbpjknkkvkvpdxhshexphdocgmpjvtmrejjyaudifduluxujaokatngbxpyunguikkdryffkgmesdyxyurjogigcrs\",
+    \"expenses_type_id\": 5
+}"
+</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost:10222/api/expenses/2"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "value": 0,
+    "description": "famulsjsaemewscterjmfrpyswhbsspfnhxludonjwqscqdncegolpgbpjknkkvkvpdxhshexphdocgmpjvtmrejjyaudifduluxujaokatngbxpyunguikkdryffkgmesdyxyurjogigcrs",
+    "expenses_type_id": 5
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+
+<pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;put(
+    'http://localhost:10222/api/expenses/2',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'value' =&gt; 0,
+            'description' =&gt; 'famulsjsaemewscterjmfrpyswhbsspfnhxludonjwqscqdncegolpgbpjknkkvkvpdxhshexphdocgmpjvtmrejjyaudifduluxujaokatngbxpyunguikkdryffkgmesdyxyurjogigcrs',
+            'expenses_type_id' =&gt; 5,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+</span>
+
+<span id="example-responses-PUTapi-expenses--id-">
+</span>
+<span id="execution-results-PUTapi-expenses--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-expenses--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-expenses--id-"></code></pre>
+</span>
+<span id="execution-error-PUTapi-expenses--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-expenses--id-"></code></pre>
+</span>
+<form id="form-PUTapi-expenses--id-" data-method="PUT"
+      data-path="api/expenses/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-expenses--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-expenses--id-"
+                    onclick="tryItOut('PUTapi-expenses--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-expenses--id-"
+                    onclick="cancelTryOut('PUTapi-expenses--id-');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-expenses--id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/expenses/{id}</code></b>
+        </p>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/expenses/{id}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="id"
+               data-endpoint="PUTapi-expenses--id-"
+               value="2"
+               data-component="url" hidden>
+    <br>
+<p>Identifier (PK) value.</p>
+            </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>value</code></b>&nbsp;&nbsp;<small>number</small>  &nbsp;
+                <input type="number"
+               name="value"
+               data-endpoint="PUTapi-expenses--id-"
+               value="0"
+               data-component="body" hidden>
+    <br>
+<p>Must be at least 0.01.</p>
+        </p>
+                <p>
+            <b><code>description</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="description"
+               data-endpoint="PUTapi-expenses--id-"
+               value="famulsjsaemewscterjmfrpyswhbsspfnhxludonjwqscqdncegolpgbpjknkkvkvpdxhshexphdocgmpjvtmrejjyaudifduluxujaokatngbxpyunguikkdryffkgmesdyxyurjogigcrs"
+               data-component="body" hidden>
+    <br>
+<p>Must be at least 3 characters. Must not be greater than 250 characters.</p>
+        </p>
+                <p>
+            <b><code>expenses_type_id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+                <input type="number"
+               name="expenses_type_id"
+               data-endpoint="PUTapi-expenses--id-"
+               value="5"
+               data-component="body" hidden>
+    <br>
+<p>Must be at least 1. Must not be greater than 5.</p>
+        </p>
+        </form>
 
     
 
