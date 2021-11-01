@@ -55,7 +55,20 @@ class ExpensesController extends Controller
     {
         return new ExpensesResource($expenses::find($id));
     }
-    
+
+    /**
+     * PUT Update
+     *
+     * Update resource based on request.
+     * If success then response includes properties from Groups "edit".
+     *
+     * <aside class="notice"><b>Try it out</b> - The <b>value</b> in documentation gets only integer. Seems to be a new bug. </aside>
+     *
+     * @group Expenses
+     *
+     * @urlParam id int required Identifier (PK) value. Example: 2
+     *
+     */
     public function update(UpdateExpenseRequest $request, Expenses $expense): Response|ExpensesResource
     {
         $expense->update($request->all());
