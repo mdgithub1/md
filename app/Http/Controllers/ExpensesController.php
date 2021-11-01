@@ -75,4 +75,16 @@ class ExpensesController extends Controller
 
         return new ExpensesResource($expense);
     }
+
+    /**
+     * POST Create
+     *
+     * @group Expenses
+     */
+    public function store(UpdateExpenseRequest $request, Expenses $expense): Response|ExpensesResource
+    {
+        $created = $expense->create($request->all());
+
+        return new ExpensesResource($expense::find($created->id));
+    }
 }
