@@ -9,12 +9,12 @@ class Expenses extends BaseModel
     /**
      * @inheritdoc
      */
-    protected string $table = 'expenses';
+    protected $table = 'expenses';
 
     /**
      * @inheritdoc
      */
-    protected array $fillable = [
+    protected $fillable = [
         'value',
         'description',
         'expenses_type_id',
@@ -23,7 +23,7 @@ class Expenses extends BaseModel
     /**
      * @inheritdoc
      */
-    protected array $with = [
+    protected $with = [
         'expenseType',
     ];
 
