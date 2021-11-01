@@ -33,12 +33,15 @@ Based on [Criteria](docs/project/001-criteria.md) project should be focused on:
 
 ## How to run
 ```bash
-|----------------------------------------------------------------------
+|-------------------------------------------------------------------------------------------------
 | The first run
 |     Initial requirements:
 |     - PHP ^8.0
 |     - Docker | docker-compose ^1.29
-|----------------------------------------------------------------------
+|
+| During the first run, connections errors to MySQL may occure (depends on the machine).
+| The connection will be established automatically when the DB container starts listening.
+|-------------------------------------------------------------------------------------------------
 
 // Clone the repository and update .env
 git clone https://github.com/mdgithub1/md.git && cd md && cp .env.local .env && composer install

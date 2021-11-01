@@ -9,7 +9,7 @@ class ExpensesType extends BaseModel
     /**
      * @inheritdoc
      */
-    protected string $table = 'expenses_type';
+    protected $table = 'expenses_type';
 
    /*
    |----------------------------------------------------------------------
